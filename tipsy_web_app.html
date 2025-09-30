@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tipsy - try nail designs on your hands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --olive: #9CA986;
+            --apricot: #F7C6A8;
+            --mauve: #B08B96;
+            --linen: #EBE7E0;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--linen);
+            color: var(--mauve);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--olive);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(156, 169, 134, 0.1);
+        }
+
+        .logo {
+            font-family: 'Italiana', serif;
+            font-size: 2em;
+            color: var(--white);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            padding: 40px 20px;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Screen */
+        .welcome {
+            text-align: center;
+            max-width: 600px;
+            margin: 60px auto;
+        }
+
+        .welcome h1 {
+            font-family: 'Italiana', serif;
+            font-size: 3em;
+            color: var(--olive);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .welcome p {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: var(--mauve);
+        }
+
+        .button {
+            background: var(--olive);
+            color: var(--white);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(156, 169, 134, 0.2);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #8a9778;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(156, 169, 134, 0.3);
+        }
+
+        .button-secondary {
+            background: var(--apricot);
+        }
+
+        .button-secondary:hover {
+            background: #e5b598;
+        }
+
+        /* Upload Area */
+        .upload-area {
+            background: var(--white);
+            border: 3px dashed var(--olive);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .upload-area:hover {
+            border-color: var(--apricot);
+            background: #f9f9f9;
+        }
+
+        .upload-area.dragover {
+            border-color: var(--apricot);
+            background: rgba(247, 198, 168, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .upload-area h2 {
+            font-family: 'Italiana', serif;
+            color: var(--olive);
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .upload-area p {
+            color: var(--mauve);
+            font-weight: 300;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* Preview Area */
+        .preview-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(156, 169, 134, 0.08);
+        }
+
+        .image-preview {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Design Grid */
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .design-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            box-shadow: 0 4px 15px rgba(156, 169, 134, 0.08);
+        }
+
+        .design-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(156, 169, 134, 0.15);
+        }
+
+        .design-card.selected {
+            border-color: var(--olive);
+            background: rgba(156, 169, 134, 0.05);
+        }
+
+        .design-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 2px solid var(--linen);
+        }
+
+        .design-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--olive);
+        }
+
+        /* Controls */
+        .controls {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(156, 169, 134, 0.08);
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group label {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--olive);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .finish-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .finish-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px 20px;
+            background: var(--linen);
+            border: 2px solid var(--linen);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--mauve);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .finish-btn:hover {
+            background: var(--white);
+        }
+
+        .finish-btn.active {
+            background: var(--white);
+            border-color: var(--olive);
+            color: var(--olive);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* Tips */
+        .tips {
+            background: rgba(247, 198, 168, 0.1);
+            border-left: 4px solid var(--apricot);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .tips h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--olive);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips li {
+            padding: 5px 0;
+            font-weight: 300;
+            color: var(--mauve);
+        }
+
+        .tips li:before {
+            content: "✨ ";
+            margin-right: 8px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid var(--linen);
+            border-top: 4px solid var(--olive);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 2.2em;
+            }
+
+            .upload-area {
+                padding: 40px 20px;
+            }
+
+            .design-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+
+        /* Success Message */
+        .success-banner {
+            background: var(--apricot);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">tipsy</div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome">
+                <h1>try before you apply</h1>
+                <p>see any nail design on your hands before your next manicure</p>
+                <button class="button" onclick="showScreen('uploadScreen')">
+                    get started
+                </button>
+
+                <div class="tips">
+                    <h3>for best results:</h3>
+                    <ul>
+                        <li>use natural lighting</li>
+                        <li>spread your fingers apart</li>
+                        <li>keep your hand flat</li>
+                        <li>fill the frame with your hand</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Screen -->
+        <div id="uploadScreen" class="screen">
+            <div class="upload-area" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📸</div>
+                <h2>upload your hand photo</h2>
+                <p>click to browse or drag & drop</p>
+                <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+            </div>
+
+            <div class="action-buttons">
+                <button class="button" onclick="showScreen('welcomeScreen')">
+                    ← back
+                </button>
+            </div>
+        </div>
+
+        <!-- Design Selection Screen -->
+        <div id="designScreen" class="screen">
+            <div class="preview-container">
+                <h2 style="font-family: 'Italiana', serif; color: var(--olive); text-align: center; margin-bottom: 20px; font-weight: 400;">your hand</h2>
+                <div class="image-preview" id="handPreview"></div>
+            </div>
+
+            <div class="controls">
+                <h2 style="font-family: 'Italiana', serif; color: var(--olive); margin-bottom: 20px; font-weight: 400;">choose your vibe</h2>
+                
+                <div class="design-grid" id="designGrid">
+                    <!-- Designs will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="button" onclick="showScreen('uploadScreen')">
+                    ← choose different photo
+                </button>
+                <button class="button button-secondary" onclick="applyDesign()" id="applyBtn" disabled>
+                    apply design →
+                </button>
+            </div>
+        </div>
+
+        <!-- Customize Screen -->
+        <div id="customizeScreen" class="screen">
+            <div class="preview-container">
+                <h2 style="font-family: 'Italiana', serif; color: var(--olive); text-align: center; margin-bottom: 20px; font-weight: 400;">preview</h2>
+                <div class="image-preview" id="resultPreview"></div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>finish</label>
+                    <div class="finish-buttons">
+                        <button class="finish-btn active" onclick="setFinish('glossy')">
+                            ✨ glossy
+                        </button>
+                        <button class="finish-btn" onclick="setFinish('matte')">
+                            🌙 matte
+                        </button>
+                        <button class="finish-btn" onclick="setFinish('chrome')">
+                            💎 chrome
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="button" onclick="showScreen('designScreen')">
+                    ← try different design
+                </button>
+                <button class="button button-secondary" onclick="saveResult()">
+                    💾 save design
+                </button>
+                <button class="button" onclick="shareResult()">
+                    📤 share
+                </button>
+            </div>
+
+            <div class="tips">
+                <h3>love your nails?</h3>
+                <ul>
+                    <li>save this image and show your nail tech</li>
+                    <li>share on social media for inspo</li>
+                    <li>try different designs and finishes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="screen">
+            <div class="loading">
+                <div class="spinner"></div>
+                <h2 style="font-family: 'Italiana', serif; color: var(--olive); font-weight: 400;">working our magic...</h2>
+                <p>detecting your nails and applying design</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Design library
+        const designs = [
+            { id: 'red', name: 'classic red', color: '#DC143C' },
+            { id: 'pink', name: 'baby pink', color: '#FFB6C1' },
+            { id: 'nude', name: 'nude', color: '#E8C4B8' },
+            { id: 'black', name: 'midnight', color: '#2C2C2C' },
+            { id: 'blue', name: 'ocean blue', color: '#4682B4' },
+            { id: 'purple', name: 'lavender', color: '#E6E6FA' },
+            { id: 'green', name: 'mint', color: '#98FF98' },
+            { id: 'gold', name: 'gold', color: '#FFD700' },
+            { id: 'coral', name: 'coral', color: '#FF7F50' },
+            { id: 'burgundy', name: 'burgundy', color: '#800020' },
+        ];
+
+        let currentImage = null;
+        let selectedDesign = null;
+        let currentFinish = 'glossy';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            populateDesigns();
+            setupDragAndDrop();
+        });
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function populateDesigns() {
+            const grid = document.getElementById('designGrid');
+            grid.innerHTML = designs.map(design => `
+                <div class="design-card" onclick="selectDesign('${design.id}')">
+                    <div class="design-preview" style="background: ${design.color}"></div>
+                    <div class="design-name">${design.name}</div>
+                </div>
+            `).join('');
+        }
+
+        function selectDesign(designId) {
+            selectedDesign = designs.find(d => d.id === designId);
+            
+            // Update UI
+            document.querySelectorAll('.design-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.design-card').classList.add('selected');
+            
+            document.getElementById('applyBtn').disabled = false;
+        }
+
+        function setupDragAndDrop() {
+            const dropZone = document.getElementById('dropZone');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => {
+                    dropZone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => {
+                    dropZone.classList.remove('dragover');
+                });
+            });
+
+            dropZone.addEventListener('drop', function(e) {
+                const files = e.dataTransfer.files;
+                if (files.length) {
+                    handleFile(files[0]);
+                }
+            });
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        }
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('please upload an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentImage = e.target.result;
+                document.getElementById('handPreview').innerHTML = 
+                    `<img src="${currentImage}" alt="your hand">`;
+                showScreen('designScreen');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyDesign() {
+            if (!selectedDesign) return;
+
+            showScreen('loadingScreen');
+
+            // Simulate processing (in production, this would call your backend API)
+            setTimeout(() => {
+                // Create a simple overlay effect (this is a simulation)
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    // Draw original image
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Add colored overlay (simplified version)
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillStyle = selectedDesign.color;
+                    // Simulate nail positions (in production, use MediaPipe)
+                    const nailPositions = [
+                        [img.width * 0.2, img.height * 0.6],
+                        [img.width * 0.35, img.height * 0.5],
+                        [img.width * 0.5, img.height * 0.45],
+                        [img.width * 0.65, img.height * 0.5],
+                        [img.width * 0.8, img.height * 0.6],
+                    ];
+                    
+                    nailPositions.forEach(([x, y]) => {
+                        ctx.beginPath();
+                        ctx.ellipse(x, y, 20, 30, 0, 0, 2 * Math.PI);
+                        ctx.fill();
+                    });
+                    
+                    const resultImage = canvas.toDataURL();
+                    document.getElementById('resultPreview').innerHTML = 
+                        `<img src="${resultImage}" alt="result">`;
+                    
+                    showScreen('customizeScreen');
+                };
+                
+                img.src = currentImage;
+            }, 2000);
+        }
+
+        function setFinish(finish) {
+            currentFinish = finish;
+            document.querySelectorAll('.finish-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function saveResult() {
+            const img = document.querySelector('#resultPreview img');
+            const link = document.createElement('a');
+            link.download = 'tipsy-nails.png';
+            link.href = img.src;
+            link.click();
+            
+            showSuccessBanner('design saved! ✨');
+        }
+
+        function shareResult() {
+            if (navigator.share) {
+                const img = document.querySelector('#resultPreview img');
+                fetch(img.src)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], 'tipsy-nails.png', { type: 'image/png' });
+                        navigator.share({
+                            title: 'My Tipsy Nail Design',
+                            text: 'Check out my nail design from tipsy!',
+                            files: [file]
+                        });
+                    });
+            } else {
+                // Fallback: copy link
+                alert('Share feature not available. Image saved to your device!');
+                saveResult();
+            }
+        }
+
+        function showSuccessBanner(message) {
+            const banner = document.createElement('div');
+            banner.className = 'success-banner';
+            banner.textContent = message;
+            document.querySelector('.main-content').prepend(banner);
+            
+            setTimeout(() => banner.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
