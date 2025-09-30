@@ -94,7 +94,7 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
 
         .button {
@@ -114,15 +114,10 @@
         .button:hover {
             background: #8a9778;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(156, 169, 134, 0.3);
         }
 
         .button-secondary {
             background: var(--apricot);
-        }
-
-        .button-secondary:hover {
-            background: #e5b598;
         }
 
         .button-outline {
@@ -135,11 +130,6 @@
         .button-outline:hover {
             background: var(--olive);
             color: var(--white);
-        }
-
-        .button-small {
-            padding: 10px 20px;
-            font-size: 14px;
         }
 
         .upload-area {
@@ -155,7 +145,6 @@
 
         .upload-area:hover {
             border-color: var(--apricot);
-            background: #f9f9f9;
         }
 
         .upload-icon {
@@ -184,12 +173,10 @@
         }
 
         .image-preview {
-            width: 100%;
             max-width: 600px;
             margin: 0 auto 20px;
             border-radius: 15px;
             overflow: hidden;
-            position: relative;
         }
 
         .image-preview img {
@@ -198,42 +185,55 @@
             display: block;
         }
 
-        /* Inspiration nail extraction */
-        .nail-extraction-canvas {
-            position: relative;
-            display: inline-block;
+        .section-title {
+            font-family: 'Italiana', serif;
+            color: var(--olive);
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-align: center;
         }
 
-        .nail-selector {
-            position: absolute;
-            border: 3px solid var(--apricot);
-            cursor: crosshair;
-            background: rgba(247, 198, 168, 0.2);
-            border-radius: 10px;
+        .instruction-box {
+            background: rgba(156, 169, 134, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
         }
 
-        .extraction-controls {
+        .extraction-canvas-container {
             text-align: center;
             margin: 20px 0;
         }
 
-        .extracted-nail-preview {
-            display: inline-block;
-            margin: 10px;
+        #extractionCanvas {
+            max-width: 100%;
+            border: 3px solid var(--olive);
+            border-radius: 15px;
+            cursor: crosshair;
+        }
+
+        .extracted-previews {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .extracted-item {
             text-align: center;
         }
 
-        .extracted-nail-preview canvas {
+        .extracted-item canvas {
             border: 3px solid var(--olive);
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(156, 169, 134, 0.15);
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .extracted-nail-preview button {
-            margin-top: 10px;
-        }
-
-        /* Nail Slots for Drag & Drop */
         .nail-slots {
             display: flex;
             justify-content: center;
@@ -252,9 +252,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
             position: relative;
-            overflow: hidden;
         }
 
         .nail-slot.drag-over {
@@ -268,22 +266,19 @@
             border-color: var(--olive);
         }
 
-        .nail-slot-label {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--mauve);
-            margin-top: 8px;
-            position: absolute;
-            bottom: 5px;
-        }
-
         .nail-slot-preview {
             width: 70px;
             height: 100px;
             border-radius: 35px;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+        }
+
+        .nail-slot-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--mauve);
+            margin-top: 8px;
         }
 
         .clear-nail {
@@ -299,19 +294,17 @@
             cursor: pointer;
             font-size: 14px;
             display: none;
-            z-index: 10;
         }
 
         .nail-slot.filled .clear-nail {
             display: block;
         }
 
-        /* Design Grid */
         .design-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .design-card {
@@ -321,14 +314,12 @@
             text-align: center;
             cursor: move;
             transition: all 0.3s;
-            border: 3px solid transparent;
             box-shadow: 0 4px 15px rgba(156, 169, 134, 0.08);
             position: relative;
         }
 
         .design-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(156, 169, 134, 0.15);
         }
 
         .design-card.dragging {
@@ -351,12 +342,6 @@
             color: var(--olive);
         }
 
-        .design-source {
-            font-size: 11px;
-            color: var(--mauve);
-            margin-top: 3px;
-        }
-
         .delete-design {
             position: absolute;
             top: 5px;
@@ -365,32 +350,15 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
+            font-size: 14px;
+            display: none;
         }
 
         .design-card:hover .delete-design {
-            opacity: 1;
-        }
-
-        .library-sections {
-            margin: 30px 0;
-        }
-
-        .library-section {
-            margin-bottom: 30px;
-        }
-
-        .library-section h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--olive);
-            font-weight: 500;
-            margin-bottom: 15px;
-            font-size: 18px;
+            display: block;
         }
 
         .tips {
@@ -416,32 +384,11 @@
         .tips li {
             padding: 5px 0;
             font-weight: 300;
-            color: var(--mauve);
         }
 
         .tips li:before {
             content: "✨ ";
             margin-right: 8px;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .spinner {
-            border: 4px solid var(--linen);
-            border-top: 4px solid var(--olive);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .success-banner {
@@ -454,61 +401,29 @@
             font-weight: 500;
         }
 
-        .controls {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(156, 169, 134, 0.08);
+        .library-section {
+            margin: 30px 0;
         }
 
-        .section-title {
-            font-family: 'Italiana', serif;
-            color: var(--olive);
-            font-size: 2em;
-            margin-bottom: 20px;
-            font-weight: 400;
-            text-align: center;
-        }
-
-        .instruction-box {
-            background: rgba(156, 169, 134, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .instruction-box p {
-            font-size: 15px;
+        .library-section h3 {
+            font-family: 'Poppins', sans-serif;
             color: var(--olive);
             font-weight: 500;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
             .welcome h1 {
-                font-size: 2.2em;
+                font-size: 2em;
             }
 
             .nail-slots {
-                gap: 10px;
+                gap: 8px;
             }
 
             .nail-slot {
                 width: 80px;
                 height: 120px;
-            }
-
-            .design-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .button {
-                width: 100%;
             }
         }
     </style>
@@ -526,16 +441,16 @@
         <div id="welcomeScreen" class="screen active">
             <div class="welcome">
                 <h1>try before you apply</h1>
-                <p>extract nail designs from inspiration and build your perfect look</p>
+                <p>extract nail designs from photos and create your perfect look</p>
                 
                 <div class="button-group">
-                    <button class="button" onclick="showScreen('uploadHandScreen')">
+                    <button class="button" onclick="goToUploadHand()">
                         📸 upload my hand
                     </button>
-                    <button class="button button-secondary" onclick="showScreen('uploadInspoScreen')">
+                    <button class="button button-secondary" onclick="goToExtract()">
                         🎨 extract nail designs
                     </button>
-                    <button class="button button-outline" onclick="showScreen('libraryScreen')">
+                    <button class="button button-outline" onclick="goToLibrary()">
                         💾 my library (<span id="libraryCount">0</span>)
                     </button>
                 </div>
@@ -543,56 +458,45 @@
                 <div class="tips">
                     <h3>how it works:</h3>
                     <ul>
-                        <li>upload nail art inspiration photos</li>
-                        <li>select and save individual nail designs</li>
-                        <li>build your library from different sources</li>
-                        <li>mix and match to create your perfect look</li>
+                        <li>upload nail art photos and select individual nails</li>
+                        <li>save designs to your personal library</li>
+                        <li>mix and match designs from different sources</li>
+                        <li>drag designs onto your hand to preview</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Upload Inspiration Screen -->
-        <div id="uploadInspoScreen" class="screen">
+        <!-- Extract Inspiration Screen -->
+        <div id="extractScreen" class="screen">
             <h2 class="section-title">extract nail designs</h2>
-            <div class="upload-area" id="inspoDropZone" onclick="document.getElementById('inspoFileInput').click()">
+            
+            <div class="upload-area" onclick="document.getElementById('inspoInput').click()">
                 <div class="upload-icon">🎨</div>
                 <h2>upload nail art photo</h2>
-                <p>from pinterest, instagram, anywhere!</p>
-                <input type="file" id="inspoFileInput" accept="image/*" onchange="handleInspoUpload(event)">
+                <p>from pinterest, instagram, or anywhere!</p>
+                <input type="file" id="inspoInput" accept="image/*">
+            </div>
+
+            <div id="extractionArea" style="display: none;">
+                <div class="preview-container">
+                    <div class="instruction-box">
+                        <p><strong>Click and drag</strong> to select each nail you want to save</p>
+                    </div>
+                    <div class="extraction-canvas-container">
+                        <canvas id="extractionCanvas"></canvas>
+                    </div>
+                </div>
+
+                <div id="extractedPreviews" class="preview-container" style="display: none;">
+                    <h3 style="text-align: center; color: var(--olive); margin-bottom: 20px;">extracted designs</h3>
+                    <div class="extracted-previews" id="previewsContainer"></div>
+                </div>
             </div>
 
             <div class="button-group">
                 <button class="button button-outline" onclick="showScreen('welcomeScreen')">
                     ← back
-                </button>
-            </div>
-        </div>
-
-        <!-- Extract Nails Screen -->
-        <div id="extractScreen" class="screen">
-            <h2 class="section-title">select nails to extract</h2>
-            
-            <div class="preview-container">
-                <div class="instruction-box">
-                    <p>👆 click and drag on each nail you want to save</p>
-                </div>
-                <div id="extractionArea" style="text-align: center;"></div>
-            </div>
-
-            <div id="extractedNails" class="preview-container" style="display: none;">
-                <h3 style="font-family: 'Poppins', sans-serif; color: var(--olive); font-weight: 500; margin-bottom: 15px; text-align: center;">
-                    extracted designs
-                </h3>
-                <div id="extractedNailsGrid" style="text-align: center;"></div>
-            </div>
-
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('uploadInspoScreen')">
-                    ← extract from different photo
-                </button>
-                <button class="button button-secondary" onclick="showScreen('libraryScreen')">
-                    view my library →
                 </button>
             </div>
         </div>
@@ -601,17 +505,15 @@
         <div id="libraryScreen" class="screen">
             <h2 class="section-title">my design library</h2>
             
-            <div class="controls">
-                <div class="library-sections">
-                    <div class="library-section">
-                        <h3>✨ saved from inspiration (<span id="savedCount">0</span>)</h3>
-                        <div class="design-grid" id="savedDesignsGrid"></div>
-                    </div>
+            <div class="preview-container">
+                <div class="library-section">
+                    <h3>✨ saved designs (<span id="savedCount">0</span>)</h3>
+                    <div class="design-grid" id="savedGrid"></div>
+                </div>
 
-                    <div class="library-section">
-                        <h3>🎨 classic colors</h3>
-                        <div class="design-grid" id="classicDesignsGrid"></div>
-                    </div>
+                <div class="library-section">
+                    <h3>🎨 classic colors</h3>
+                    <div class="design-grid" id="classicGrid"></div>
                 </div>
             </div>
 
@@ -619,10 +521,10 @@
                 <button class="button button-outline" onclick="showScreen('welcomeScreen')">
                     ← home
                 </button>
-                <button class="button button-secondary" onclick="showScreen('uploadInspoScreen')">
+                <button class="button button-secondary" onclick="goToExtract()">
                     + extract more designs
                 </button>
-                <button class="button" onclick="startDesigning()">
+                <button class="button" onclick="goToUploadHand()">
                     build my look →
                 </button>
             </div>
@@ -631,11 +533,12 @@
         <!-- Upload Hand Screen -->
         <div id="uploadHandScreen" class="screen">
             <h2 class="section-title">upload your hand</h2>
-            <div class="upload-area" id="handDropZone" onclick="document.getElementById('handFileInput').click()">
+            
+            <div class="upload-area" onclick="document.getElementById('handInput').click()">
                 <div class="upload-icon">📸</div>
-                <h2>upload your hand photo</h2>
-                <p>spread your fingers and use good lighting</p>
-                <input type="file" id="handFileInput" accept="image/*" onchange="handleHandUpload(event)">
+                <h2>upload hand photo</h2>
+                <p>spread fingers, use good lighting</p>
+                <input type="file" id="handInput" accept="image/*">
             </div>
 
             <div class="button-group">
@@ -645,58 +548,56 @@
             </div>
         </div>
 
-        <!-- Design Editor Screen -->
+        <!-- Editor Screen -->
         <div id="editorScreen" class="screen">
             <div class="preview-container">
                 <h2 class="section-title">your hand</h2>
                 <div class="image-preview" id="handPreview"></div>
             </div>
 
-            <div class="controls">
+            <div class="preview-container">
                 <h2 class="section-title">drag designs to your nails</h2>
                 
                 <div class="instruction-box">
-                    <p>👇 drag any design from your library below onto each nail</p>
+                    <p>👇 drag any design from below onto each nail above</p>
                 </div>
 
                 <div class="nail-slots">
-                    <div class="nail-slot" data-finger="thumb" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="dragLeave(event)">
+                    <div class="nail-slot" data-finger="thumb">
                         <div class="nail-slot-preview" id="thumb-preview"></div>
                         <button class="clear-nail" onclick="clearNail('thumb')">×</button>
                         <div class="nail-slot-label">thumb</div>
                     </div>
-                    <div class="nail-slot" data-finger="index" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="dragLeave(event)">
+                    <div class="nail-slot" data-finger="index">
                         <div class="nail-slot-preview" id="index-preview"></div>
                         <button class="clear-nail" onclick="clearNail('index')">×</button>
                         <div class="nail-slot-label">index</div>
                     </div>
-                    <div class="nail-slot" data-finger="middle" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="dragLeave(event)">
+                    <div class="nail-slot" data-finger="middle">
                         <div class="nail-slot-preview" id="middle-preview"></div>
                         <button class="clear-nail" onclick="clearNail('middle')">×</button>
                         <div class="nail-slot-label">middle</div>
                     </div>
-                    <div class="nail-slot" data-finger="ring" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="dragLeave(event)">
+                    <div class="nail-slot" data-finger="ring">
                         <div class="nail-slot-preview" id="ring-preview"></div>
                         <button class="clear-nail" onclick="clearNail('ring')">×</button>
                         <div class="nail-slot-label">ring</div>
                     </div>
-                    <div class="nail-slot" data-finger="pinky" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="dragLeave(event)">
+                    <div class="nail-slot" data-finger="pinky">
                         <div class="nail-slot-preview" id="pinky-preview"></div>
                         <button class="clear-nail" onclick="clearNail('pinky')">×</button>
                         <div class="nail-slot-label">pinky</div>
                     </div>
                 </div>
 
-                <div class="library-sections">
-                    <div class="library-section">
-                        <h3>✨ my saved designs</h3>
-                        <div class="design-grid" id="editorSavedGrid"></div>
-                    </div>
+                <div class="library-section">
+                    <h3>✨ my saved designs</h3>
+                    <div class="design-grid" id="editorSavedGrid"></div>
+                </div>
 
-                    <div class="library-section">
-                        <h3>🎨 classic colors</h3>
-                        <div class="design-grid" id="editorClassicGrid"></div>
-                    </div>
+                <div class="library-section">
+                    <h3>🎨 classic colors</h3>
+                    <div class="design-grid" id="editorClassicGrid"></div>
                 </div>
             </div>
 
@@ -707,15 +608,6 @@
                 <button class="button button-secondary" onclick="applyDesigns()">
                     apply to my hand →
                 </button>
-            </div>
-
-            <div class="tips">
-                <h3>💡 tips:</h3>
-                <ul>
-                    <li>drag different designs to create unique looks</li>
-                    <li>mix designs from different inspiration photos</li>
-                    <li>click × to clear a nail and try something else</li>
-                </ul>
             </div>
         </div>
 
@@ -741,152 +633,267 @@
             <div class="tips">
                 <h3>love your nails?</h3>
                 <ul>
-                    <li>save this image and show your nail tech</li>
-                    <li>share on social media for inspo</li>
-                    <li>start over to try more combinations</li>
+                    <li>save and show your nail tech</li>
+                    <li>share on social media</li>
+                    <li>start over to try more looks</li>
                 </ul>
-            </div>
-        </div>
-
-        <!-- Loading Screen -->
-        <div id="loadingScreen" class="screen">
-            <div class="loading">
-                <div class="spinner"></div>
-                <h2 style="font-family: 'Italiana', serif; color: var(--olive); font-weight: 400;">working our magic...</h2>
-                <p id="loadingText">processing your design</p>
             </div>
         </div>
 
     </div>
 
     <script>
-        // State management
+        // State
+        let savedDesigns = JSON.parse(localStorage.getItem('tipsySaved') || '[]');
         let currentHandImage = null;
-        let currentInspoImage = null;
-        let savedDesigns = JSON.parse(localStorage.getItem('tipsySavedDesigns') || '[]');
-        let nailDesigns = {
-            thumb: null,
-            index: null,
-            middle: null,
-            ring: null,
-            pinky: null
-        };
-
-        // Default classic colors
-        const classicDesigns = [
-            { id: 'red', name: 'classic red', color: '#DC143C', type: 'color' },
-            { id: 'pink', name: 'baby pink', color: '#FFB6C1', type: 'color' },
+        let nailDesigns = { thumb: null, index: null, middle: null, ring: null, pinky: null };
+        
+        const classicColors = [
+            { id: 'red', name: 'red', color: '#DC143C', type: 'color' },
+            { id: 'pink', name: 'pink', color: '#FFB6C1', type: 'color' },
             { id: 'nude', name: 'nude', color: '#E8C4B8', type: 'color' },
-            { id: 'black', name: 'midnight', color: '#2C2C2C', type: 'color' },
-            { id: 'blue', name: 'ocean blue', color: '#4682B4', type: 'color' },
-            { id: 'purple', name: 'lavender', color: '#E6E6FA', type: 'color' },
-            { id: 'green', name: 'mint', color: '#98FF98', type: 'color' },
+            { id: 'black', name: 'black', color: '#2C2C2C', type: 'color' },
+            { id: 'blue', name: 'blue', color: '#4682B4', type: 'color' },
+            { id: 'purple', name: 'purple', color: '#E6E6FA', type: 'color' },
+            { id: 'green', name: 'green', color: '#98FF98', type: 'color' },
             { id: 'gold', name: 'gold', color: '#FFD700', type: 'color' },
-            { id: 'coral', name: 'coral', color: '#FF7F50', type: 'color' },
-            { id: 'burgundy', name: 'burgundy', color: '#800020', type: 'color' },
         ];
 
-        let extractionCanvas, extractionCtx, extractionImage;
-        let selections = [];
-        let isSelecting = false;
+        // Extraction variables
+        let extractCanvas, extractCtx, extractImg;
+        let isDrawing = false;
         let startX, startY;
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateLibraryCount();
-            populateLibrary();
-        });
+        updateCounts();
 
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-            
-            if (screenId === 'libraryScreen') {
-                populateLibrary();
-            } else if (screenId === 'editorScreen') {
-                populateEditorDesigns();
-            }
+        // Navigation
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
         }
 
-        function updateLibraryCount() {
+        function goToExtract() {
+            showScreen('extractScreen');
+        }
+
+        function goToLibrary() {
+            populateLibrary();
+            showScreen('libraryScreen');
+        }
+
+        function goToUploadHand() {
+            showScreen('uploadHandScreen');
+        }
+
+        function updateCounts() {
             document.getElementById('libraryCount').textContent = savedDesigns.length;
             document.getElementById('savedCount').textContent = savedDesigns.length;
         }
 
-        // Handle inspiration upload
-        function handleInspoUpload(event) {
-            const file = event.target.files[0];
+        // File uploads
+        document.getElementById('inspoInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    currentInspoImage = e.target.result;
-                    setupExtractionCanvas(currentInspoImage);
-                    showScreen('extractScreen');
+                reader.onload = function(event) {
+                    setupExtraction(event.target.result);
                 };
                 reader.readAsDataURL(file);
             }
-        }
+        });
 
-        // Setup canvas for nail selection
-        function setupExtractionCanvas(imageSrc) {
-            const img = new Image();
-            img.onload = function() {
-                extractionImage = img;
-                extractionCanvas = document.createElement('canvas');
-                extractionCtx = extractionCanvas.getContext('2d');
+        document.getElementById('handInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    currentHandImage = event.target.result;
+                    document.getElementById('handPreview').innerHTML = `<img src="${currentHandImage}">`;
+                    populateEditor();
+                    showScreen('editorScreen');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Setup extraction canvas
+        function setupExtraction(imgSrc) {
+            document.getElementById('extractionArea').style.display = 'block';
+            
+            extractImg = new Image();
+            extractImg.onload = function() {
+                extractCanvas = document.getElementById('extractionCanvas');
+                extractCtx = extractCanvas.getContext('2d');
                 
-                // Scale image to fit screen
-                const maxWidth = Math.min(800, window.innerWidth - 40);
-                const scale = maxWidth / img.width;
-                extractionCanvas.width = img.width * scale;
-                extractionCanvas.height = img.height * scale;
+                const maxW = Math.min(600, window.innerWidth - 80);
+                const scale = maxW / extractImg.width;
+                extractCanvas.width = extractImg.width * scale;
+                extractCanvas.height = extractImg.height * scale;
                 
-                extractionCtx.drawImage(img, 0, 0, extractionCanvas.width, extractionCanvas.height);
+                extractCtx.drawImage(extractImg, 0, 0, extractCanvas.width, extractCanvas.height);
                 
-                extractionCanvas.style.maxWidth = '100%';
-                extractionCanvas.style.border = '3px solid var(--olive)';
-                extractionCanvas.style.borderRadius = '15px';
-                extractionCanvas.style.cursor = 'crosshair';
-                
-                document.getElementById('extractionArea').innerHTML = '';
-                document.getElementById('extractionArea').appendChild(extractionCanvas);
-                
-                // Add selection handlers
-                extractionCanvas.addEventListener('mousedown', startSelection);
-                extractionCanvas.addEventListener('mousemove', updateSelection);
-                extractionCanvas.addEventListener('mouseup', endSelection);
-                
-                selections = [];
+                extractCanvas.onmousedown = startDraw;
+                extractCanvas.onmousemove = draw;
+                extractCanvas.onmouseup = endDraw;
             };
-            img.src = imageSrc;
+            extractImg.src = imgSrc;
         }
 
-        function startSelection(e) {
-            const rect = extractionCanvas.getBoundingClientRect();
+        function startDraw(e) {
+            const rect = extractCanvas.getBoundingClientRect();
             startX = e.clientX - rect.left;
             startY = e.clientY - rect.top;
-            isSelecting = true;
+            isDrawing = true;
         }
 
-        function updateSelection(e) {
-            if (!isSelecting) return;
+        function draw(e) {
+            if (!isDrawing) return;
             
-            const rect = extractionCanvas.getBoundingClientRect();
-            const currentX = e.clientX - rect.left;
-            const currentY = e.clientY - rect.top;
+            const rect = extractCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
             
-            // Redraw image
-            extractionCtx.drawImage(extractionImage, 0, 0, extractionCanvas.width, extractionCanvas.height);
+            extractCtx.clearRect(0, 0, extractCanvas.width, extractCanvas.height);
+            extractCtx.drawImage(extractImg, 0, 0, extractCanvas.width, extractCanvas.height);
             
-            // Draw existing selections
-            selections.forEach(sel => {
-                extractionCtx.strokeStyle = '#F7C6A8';
-                extractionCtx.lineWidth = 3;
-                extractionCtx.strokeRect(sel.x, sel.y, sel.width, sel.height);
-            });
+            extractCtx.strokeStyle = '#9CA986';
+            extractCtx.lineWidth = 3;
+            extractCtx.strokeRect(startX, startY, x - startX, y - startY);
+        }
+
+        function endDraw(e) {
+            if (!isDrawing) return;
+            isDrawing = false;
             
-            // Draw current selection
-            const width = currentX - startX;
-            const height =
+            const rect = extractCanvas.getBoundingClientRect();
+            const endX = e.clientX - rect.left;
+            const endY = e.clientY - rect.top;
+            
+            const w = Math.abs(endX - startX);
+            const h = Math.abs(endY - startY);
+            
+            if (w > 30 && h > 30) {
+                extractNail(Math.min(startX, endX), Math.min(startY, endY), w, h);
+            }
+        }
+
+        function extractNail(x, y, w, h) {
+            const scale = extractImg.width / extractCanvas.width;
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            tempCanvas.width = w * scale;
+            tempCanvas.height = h * scale;
+            
+            tempCtx.drawImage(extractImg, x * scale, y * scale, w * scale, h * scale, 0, 0, tempCanvas.width, tempCanvas.height);
+            
+            const dataUrl = tempCanvas.toDataURL();
+            showExtracted(dataUrl);
+        }
+
+        function showExtracted(dataUrl) {
+            document.getElementById('extractedPreviews').style.display = 'block';
+            const container = document.getElementById('previewsContainer');
+            
+            const div = document.createElement('div');
+            div.className = 'extracted-item';
+            div.innerHTML = `
+                <canvas width="70" height="100"></canvas>
+                <button class="button" style="padding: 8px 16px; font-size: 14px;" onclick='saveDesign("${dataUrl}")'>
+                    💾 save
+                </button>
+            `;
+            
+            const canvas = div.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.onload = () => ctx.drawImage(img, 0, 0, 70, 100);
+            img.src = dataUrl;
+            
+            container.appendChild(div);
+        }
+
+        function saveDesign(dataUrl) {
+            const design = {
+                id: 'saved-' + Date.now(),
+                name: 'design ' + (savedDesigns.length + 1),
+                imageData: dataUrl,
+                type: 'extracted'
+            };
+            
+            savedDesigns.push(design);
+            localStorage.setItem('tipsySaved', JSON.stringify(savedDesigns));
+            updateCounts();
+            showBanner('✨ saved to library!');
+        }
+
+        function populateLibrary() {
+            const savedGrid = document.getElementById('savedGrid');
+            const classicGrid = document.getElementById('classicGrid');
+            
+            if (savedDesigns.length === 0) {
+                savedGrid.innerHTML = '<p style="text-align:center;padding:20px;color:var(--mauve)">no designs yet - extract some!</p>';
+            } else {
+                savedGrid.innerHTML = savedDesigns.map(d => makeCard(d, true)).join('');
+            }
+            
+            classicGrid.innerHTML = classicColors.map(d => makeCard(d, false)).join('');
+        }
+
+        function populateEditor() {
+            const savedGrid = document.getElementById('editorSavedGrid');
+            const classicGrid = document.getElementById('editorClassicGrid');
+            
+            if (savedDesigns.length === 0) {
+                savedGrid.innerHTML = '<p style="text-align:center;padding:20px;color:var(--mauve)">extract designs first!</p>';
+            } else {
+                savedGrid.innerHTML = savedDesigns.map(d => makeCard(d, false)).join('');
+            }
+            
+            classicGrid.innerHTML = classicColors.map(d => makeCard(d, false)).join('');
+        }
+
+        function makeCard(design, showDelete) {
+            const style = design.type === 'color' 
+                ? `background: ${design.color}` 
+                : `background-image: url('${design.imageData}'); background-size: cover`;
+            
+            return `
+                <div class="design-card" draggable="true" data-design='${JSON.stringify(design)}'>
+                    ${showDelete ? `<button class="delete-design" onclick='deleteDesign("${design.id}")'>×</button>` : ''}
+                    <div class="design-preview" style="${style}"></div>
+                    <div class="design-name">${design.name}</div>
+                </div>
+            `;
+        }
+
+        function deleteDesign(id) {
+            if (confirm('delete this design?')) {
+                savedDesigns = savedDesigns.filter(d => d.id !== id);
+                localStorage.setItem('tipsySaved', JSON.stringify(savedDesigns));
+                updateCounts();
+                populateLibrary();
+            }
+        }
+
+        // Drag and drop
+        let draggedDesign = null;
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.classList.contains('design-card')) {
+                draggedDesign = JSON.parse(e.target.getAttribute('data-design'));
+                e.target.classList.add('dragging');
+            }
+        });
+
+        document.addEventListener('dragend', function(e) {
+            if (e.target.classList.contains('design-card')) {
+                e.target.classList.remove('dragging');
+            }
+        });
+
+        document.querySelectorAll('.nail-slot').forEach(slot => {
+            slot.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this
