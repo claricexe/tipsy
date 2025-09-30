@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tipsy - try nail designs on your hands</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,137 +12,107 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --olive: #9CA986;
-            --apricot: #F7C6A8;
-            --mauve: #B08B96;
-            --linen: #FFF8F0;
-            --white: #FFFFFF;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--linen);
-            color: var(--mauve);
+            background: #FFF8F0;
+            color: #B08B96;
             line-height: 1.6;
-            min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         header {
-            background: var(--olive);
+            background: #9CA986;
             padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(156, 169, 134, 0.1);
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .logo {
             font-family: 'Italiana', serif;
             font-size: 2em;
-            color: var(--white);
-            text-align: center;
+            color: white;
             letter-spacing: 2px;
-        }
-
-        .main-content {
-            padding: 40px 20px;
         }
 
         .screen {
             display: none;
-            animation: fadeIn 0.3s ease;
         }
 
         .screen.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .welcome {
-            text-align: center;
-            max-width: 600px;
-            margin: 60px auto;
-        }
-
-        .welcome h1 {
+        h1 {
             font-family: 'Italiana', serif;
-            font-size: 3em;
-            color: var(--olive);
+            font-size: 2.5em;
+            color: #9CA986;
+            text-align: center;
             margin-bottom: 20px;
             font-weight: 400;
         }
 
-        .welcome p {
-            font-size: 1.2em;
+        p {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 30px;
             font-weight: 300;
-            margin-bottom: 40px;
-            color: var(--mauve);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px 0;
         }
 
         .button {
-            background: var(--olive);
-            color: var(--white);
+            background: #9CA986;
+            color: white;
             border: none;
-            padding: 18px 40px;
-            border-radius: 15px;
+            padding: 15px 30px;
+            border-radius: 10px;
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(156, 169, 134, 0.2);
+            margin: 10px;
+            display: inline-block;
         }
 
         .button:hover {
             background: #8a9778;
-            transform: translateY(-2px);
         }
 
         .button-secondary {
-            background: var(--apricot);
+            background: #F7C6A8;
         }
 
         .button-outline {
-            background: transparent;
-            border: 2px solid var(--olive);
-            color: var(--olive);
-            box-shadow: none;
+            background: white;
+            border: 2px solid #9CA986;
+            color: #9CA986;
         }
 
         .button-outline:hover {
-            background: var(--olive);
-            color: var(--white);
+            background: #9CA986;
+            color: white;
+        }
+
+        .center {
+            text-align: center;
         }
 
         .upload-area {
-            background: var(--white);
-            border: 3px dashed var(--olive);
+            background: white;
+            border: 3px dashed #9CA986;
             border-radius: 20px;
-            padding: 60px 40px;
+            padding: 60px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 30px;
+            margin: 30px auto;
+            max-width: 600px;
         }
 
         .upload-area:hover {
-            border-color: var(--apricot);
+            border-color: #F7C6A8;
         }
 
         .upload-icon {
@@ -152,86 +120,24 @@
             margin-bottom: 20px;
         }
 
-        .upload-area h2 {
-            font-family: 'Italiana', serif;
-            color: var(--olive);
-            font-size: 2em;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
         input[type="file"] {
             display: none;
         }
 
-        .preview-container {
-            background: var(--white);
+        .preview {
+            background: white;
             border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(156, 169, 134, 0.08);
+            margin: 30px auto;
+            max-width: 800px;
         }
 
-        .image-preview {
-            max-width: 600px;
-            margin: 0 auto 20px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .image-preview img {
+        .preview img {
             width: 100%;
-            height: auto;
+            max-width: 600px;
             display: block;
-        }
-
-        .section-title {
-            font-family: 'Italiana', serif;
-            color: var(--olive);
-            font-size: 2em;
-            margin-bottom: 20px;
-            font-weight: 400;
-            text-align: center;
-        }
-
-        .instruction-box {
-            background: rgba(156, 169, 134, 0.1);
-            padding: 20px;
+            margin: 0 auto;
             border-radius: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .extraction-canvas-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        #extractionCanvas {
-            max-width: 100%;
-            border: 3px solid var(--olive);
-            border-radius: 15px;
-            cursor: crosshair;
-        }
-
-        .extracted-previews {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .extracted-item {
-            text-align: center;
-        }
-
-        .extracted-item canvas {
-            border: 3px solid var(--olive);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(156, 169, 134, 0.15);
-            display: block;
-            margin-bottom: 10px;
         }
 
         .nail-slots {
@@ -243,10 +149,10 @@
         }
 
         .nail-slot {
-            width: 100px;
-            height: 140px;
-            background: var(--white);
-            border: 3px dashed var(--mauve);
+            width: 90px;
+            height: 130px;
+            background: white;
+            border: 3px dashed #B08B96;
             border-radius: 15px;
             display: flex;
             flex-direction: column;
@@ -255,124 +161,95 @@
             position: relative;
         }
 
-        .nail-slot.drag-over {
-            border-color: var(--olive);
-            background: rgba(156, 169, 134, 0.1);
-            transform: scale(1.05);
-        }
-
         .nail-slot.filled {
+            border-color: #9CA986;
             border-style: solid;
-            border-color: var(--olive);
         }
 
-        .nail-slot-preview {
-            width: 70px;
-            height: 100px;
-            border-radius: 35px;
+        .nail-preview {
+            width: 60px;
+            height: 90px;
+            border-radius: 30px;
             background-size: cover;
             background-position: center;
         }
 
-        .nail-slot-label {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--mauve);
-            margin-top: 8px;
+        .nail-label {
+            font-size: 11px;
+            margin-top: 5px;
+            color: #B08B96;
         }
 
-        .clear-nail {
+        .clear-btn {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            background: var(--mauve);
+            top: 3px;
+            right: 3px;
+            background: #B08B96;
             color: white;
             border: none;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
             cursor: pointer;
-            font-size: 14px;
             display: none;
         }
 
-        .nail-slot.filled .clear-nail {
+        .nail-slot.filled .clear-btn {
             display: block;
         }
 
         .design-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
 
         .design-card {
-            background: var(--white);
+            background: white;
             border-radius: 15px;
             padding: 15px;
             text-align: center;
-            cursor: move;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(156, 169, 134, 0.08);
-            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
 
         .design-card:hover {
-            transform: translateY(-5px);
+            border-color: #9CA986;
         }
 
-        .design-card.dragging {
-            opacity: 0.5;
+        .design-card.selected {
+            border-color: #F7C6A8;
+            background: #FFF8F0;
         }
 
         .design-preview {
-            width: 70px;
-            height: 100px;
-            border-radius: 35px;
+            width: 60px;
+            height: 90px;
+            border-radius: 30px;
             margin: 0 auto 10px;
-            border: 2px solid var(--linen);
             background-size: cover;
             background-position: center;
         }
 
         .design-name {
-            font-size: 13px;
+            font-size: 12px;
+            color: #9CA986;
             font-weight: 500;
-            color: var(--olive);
-        }
-
-        .delete-design {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: var(--mauve);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            font-size: 14px;
-            display: none;
-        }
-
-        .design-card:hover .delete-design {
-            display: block;
         }
 
         .tips {
             background: rgba(247, 198, 168, 0.1);
-            border-left: 4px solid var(--apricot);
+            border-left: 4px solid #F7C6A8;
             padding: 20px;
             border-radius: 10px;
-            margin-top: 30px;
+            margin: 30px auto;
+            max-width: 600px;
         }
 
         .tips h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--olive);
-            font-weight: 500;
+            color: #9CA986;
             margin-bottom: 10px;
         }
 
@@ -381,253 +258,123 @@
             padding: 0;
         }
 
-        .tips li {
-            padding: 5px 0;
-            font-weight: 300;
-        }
-
         .tips li:before {
             content: "✨ ";
-            margin-right: 8px;
         }
 
-        .success-banner {
-            background: var(--apricot);
-            color: var(--white);
+        .banner {
+            background: #F7C6A8;
+            color: white;
             padding: 15px;
-            border-radius: 15px;
+            border-radius: 10px;
             text-align: center;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .library-section {
-            margin: 30px 0;
-        }
-
-        .library-section h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--olive);
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .welcome h1 {
-                font-size: 2em;
-            }
-
-            .nail-slots {
-                gap: 8px;
-            }
-
-            .nail-slot {
-                width: 80px;
-                height: 120px;
-            }
+            margin: 20px auto;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">tipsy</div>
-        </div>
+        <div class="logo">tipsy</div>
     </header>
 
-    <div class="container main-content">
+    <div class="container">
         
-        <!-- Welcome Screen -->
-        <div id="welcomeScreen" class="screen active">
-            <div class="welcome">
-                <h1>try before you apply</h1>
-                <p>extract nail designs from photos and create your perfect look</p>
-                
-                <div class="button-group">
-                    <button class="button" onclick="goToUploadHand()">
-                        📸 upload my hand
-                    </button>
-                    <button class="button button-secondary" onclick="goToExtract()">
-                        🎨 extract nail designs
-                    </button>
-                    <button class="button button-outline" onclick="goToLibrary()">
-                        💾 my library (<span id="libraryCount">0</span>)
-                    </button>
-                </div>
+        <!-- Screen 1: Welcome -->
+        <div id="screen1" class="screen active">
+            <h1>try before you apply</h1>
+            <p>see nail designs on your hands before your manicure</p>
+            
+            <div class="center">
+                <button class="button" onclick="goToScreen2()">📸 start now</button>
+            </div>
 
-                <div class="tips">
-                    <h3>how it works:</h3>
-                    <ul>
-                        <li>upload nail art photos and select individual nails</li>
-                        <li>save designs to your personal library</li>
-                        <li>mix and match designs from different sources</li>
-                        <li>drag designs onto your hand to preview</li>
-                    </ul>
-                </div>
+            <div class="tips">
+                <h3>how it works:</h3>
+                <ul>
+                    <li>upload a photo of your hand</li>
+                    <li>choose from colors or upload inspiration</li>
+                    <li>see designs on your nails instantly</li>
+                    <li>save and share your look</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Extract Inspiration Screen -->
-        <div id="extractScreen" class="screen">
-            <h2 class="section-title">extract nail designs</h2>
-            
-            <div class="upload-area" onclick="document.getElementById('inspoInput').click()">
-                <div class="upload-icon">🎨</div>
-                <h2>upload nail art photo</h2>
-                <p>from pinterest, instagram, or anywhere!</p>
-                <input type="file" id="inspoInput" accept="image/*">
-            </div>
+        <!-- Screen 2: Upload Hand -->
+        <div id="screen2" class="screen">
+            <h1>upload your hand</h1>
+            <p>take a photo with fingers spread apart</p>
 
-            <div id="extractionArea" style="display: none;">
-                <div class="preview-container">
-                    <div class="instruction-box">
-                        <p><strong>Click and drag</strong> to select each nail you want to save</p>
-                    </div>
-                    <div class="extraction-canvas-container">
-                        <canvas id="extractionCanvas"></canvas>
-                    </div>
-                </div>
-
-                <div id="extractedPreviews" class="preview-container" style="display: none;">
-                    <h3 style="text-align: center; color: var(--olive); margin-bottom: 20px;">extracted designs</h3>
-                    <div class="extracted-previews" id="previewsContainer"></div>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('welcomeScreen')">
-                    ← back
-                </button>
-            </div>
-        </div>
-
-        <!-- Library Screen -->
-        <div id="libraryScreen" class="screen">
-            <h2 class="section-title">my design library</h2>
-            
-            <div class="preview-container">
-                <div class="library-section">
-                    <h3>✨ saved designs (<span id="savedCount">0</span>)</h3>
-                    <div class="design-grid" id="savedGrid"></div>
-                </div>
-
-                <div class="library-section">
-                    <h3>🎨 classic colors</h3>
-                    <div class="design-grid" id="classicGrid"></div>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('welcomeScreen')">
-                    ← home
-                </button>
-                <button class="button button-secondary" onclick="goToExtract()">
-                    + extract more designs
-                </button>
-                <button class="button" onclick="goToUploadHand()">
-                    build my look →
-                </button>
-            </div>
-        </div>
-
-        <!-- Upload Hand Screen -->
-        <div id="uploadHandScreen" class="screen">
-            <h2 class="section-title">upload your hand</h2>
-            
-            <div class="upload-area" onclick="document.getElementById('handInput').click()">
+            <div class="upload-area" onclick="document.getElementById('handFile').click()">
                 <div class="upload-icon">📸</div>
-                <h2>upload hand photo</h2>
-                <p>spread fingers, use good lighting</p>
-                <input type="file" id="handInput" accept="image/*">
+                <h2 style="color: #9CA986; font-family: Italiana; font-weight: 400;">click to upload</h2>
+                <p style="color: #B08B96;">or drag and drop</p>
+                <input type="file" id="handFile" accept="image/*">
             </div>
 
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('welcomeScreen')">
-                    ← back
-                </button>
+            <div class="center">
+                <button class="button button-outline" onclick="goToScreen1()">← back</button>
             </div>
         </div>
 
-        <!-- Editor Screen -->
-        <div id="editorScreen" class="screen">
-            <div class="preview-container">
-                <h2 class="section-title">your hand</h2>
-                <div class="image-preview" id="handPreview"></div>
+        <!-- Screen 3: Choose Designs -->
+        <div id="screen3" class="screen">
+            <div class="preview">
+                <h2 style="color: #9CA986; text-align: center; font-family: Italiana; font-weight: 400; margin-bottom: 20px;">your hand</h2>
+                <img id="handImg" src="" alt="your hand">
             </div>
 
-            <div class="preview-container">
-                <h2 class="section-title">drag designs to your nails</h2>
-                
-                <div class="instruction-box">
-                    <p>👇 drag any design from below onto each nail above</p>
-                </div>
+            <h2 style="color: #9CA986; text-align: center; font-family: Italiana; font-weight: 400; margin: 30px 0;">choose designs for each nail</h2>
 
-                <div class="nail-slots">
-                    <div class="nail-slot" data-finger="thumb">
-                        <div class="nail-slot-preview" id="thumb-preview"></div>
-                        <button class="clear-nail" onclick="clearNail('thumb')">×</button>
-                        <div class="nail-slot-label">thumb</div>
-                    </div>
-                    <div class="nail-slot" data-finger="index">
-                        <div class="nail-slot-preview" id="index-preview"></div>
-                        <button class="clear-nail" onclick="clearNail('index')">×</button>
-                        <div class="nail-slot-label">index</div>
-                    </div>
-                    <div class="nail-slot" data-finger="middle">
-                        <div class="nail-slot-preview" id="middle-preview"></div>
-                        <button class="clear-nail" onclick="clearNail('middle')">×</button>
-                        <div class="nail-slot-label">middle</div>
-                    </div>
-                    <div class="nail-slot" data-finger="ring">
-                        <div class="nail-slot-preview" id="ring-preview"></div>
-                        <button class="clear-nail" onclick="clearNail('ring')">×</button>
-                        <div class="nail-slot-label">ring</div>
-                    </div>
-                    <div class="nail-slot" data-finger="pinky">
-                        <div class="nail-slot-preview" id="pinky-preview"></div>
-                        <button class="clear-nail" onclick="clearNail('pinky')">×</button>
-                        <div class="nail-slot-label">pinky</div>
-                    </div>
+            <div class="nail-slots">
+                <div class="nail-slot" data-finger="thumb">
+                    <div class="nail-preview" id="prev-thumb"></div>
+                    <button class="clear-btn" onclick="clearNail('thumb')">×</button>
+                    <div class="nail-label">thumb</div>
                 </div>
-
-                <div class="library-section">
-                    <h3>✨ my saved designs</h3>
-                    <div class="design-grid" id="editorSavedGrid"></div>
+                <div class="nail-slot" data-finger="index">
+                    <div class="nail-preview" id="prev-index"></div>
+                    <button class="clear-btn" onclick="clearNail('index')">×</button>
+                    <div class="nail-label">index</div>
                 </div>
-
-                <div class="library-section">
-                    <h3>🎨 classic colors</h3>
-                    <div class="design-grid" id="editorClassicGrid"></div>
+                <div class="nail-slot" data-finger="middle">
+                    <div class="nail-preview" id="prev-middle"></div>
+                    <button class="clear-btn" onclick="clearNail('middle')">×</button>
+                    <div class="nail-label">middle</div>
+                </div>
+                <div class="nail-slot" data-finger="ring">
+                    <div class="nail-preview" id="prev-ring"></div>
+                    <button class="clear-btn" onclick="clearNail('ring')">×</button>
+                    <div class="nail-label">ring</div>
+                </div>
+                <div class="nail-slot" data-finger="pinky">
+                    <div class="nail-preview" id="prev-pinky"></div>
+                    <button class="clear-btn" onclick="clearNail('pinky')">×</button>
+                    <div class="nail-label">pinky</div>
                 </div>
             </div>
 
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('welcomeScreen')">
-                    ← start over
-                </button>
-                <button class="button button-secondary" onclick="applyDesigns()">
-                    apply to my hand →
-                </button>
+            <h3 style="color: #9CA986; text-align: center; margin: 20px 0;">tap a design, then tap a nail above</h3>
+
+            <div class="design-grid" id="designGrid"></div>
+
+            <div class="center">
+                <button class="button button-outline" onclick="goToScreen2()">← change photo</button>
+                <button class="button button-secondary" onclick="applyDesigns()">apply designs →</button>
             </div>
         </div>
 
-        <!-- Result Screen -->
-        <div id="resultScreen" class="screen">
-            <div class="preview-container">
-                <h2 class="section-title">your design</h2>
-                <div class="image-preview" id="resultPreview"></div>
+        <!-- Screen 4: Result -->
+        <div id="screen4" class="screen">
+            <div class="preview">
+                <h2 style="color: #9CA986; text-align: center; font-family: Italiana; font-weight: 400; margin-bottom: 20px;">your design</h2>
+                <img id="resultImg" src="" alt="result">
             </div>
 
-            <div class="button-group">
-                <button class="button button-outline" onclick="showScreen('editorScreen')">
-                    ← try different designs
-                </button>
-                <button class="button" onclick="saveResult()">
-                    💾 save image
-                </button>
-                <button class="button button-secondary" onclick="shareResult()">
-                    📤 share
-                </button>
+            <div class="center">
+                <button class="button button-outline" onclick="goToScreen3()">← try different designs</button>
+                <button class="button" onclick="saveImage()">💾 save image</button>
+                <button class="button button-secondary" onclick="shareImage()">📤 share</button>
             </div>
 
             <div class="tips">
@@ -635,7 +382,7 @@
                 <ul>
                     <li>save and show your nail tech</li>
                     <li>share on social media</li>
-                    <li>start over to try more looks</li>
+                    <li>try more combinations</li>
                 </ul>
             </div>
         </div>
@@ -643,257 +390,192 @@
     </div>
 
     <script>
-        // State
-        let savedDesigns = JSON.parse(localStorage.getItem('tipsySaved') || '[]');
-        let currentHandImage = null;
-        let nailDesigns = { thumb: null, index: null, middle: null, ring: null, pinky: null };
+        // Simple state
+        let currentHand = null;
+        let selectedDesign = null;
+        let nailDesigns = {};
         
-        const classicColors = [
-            { id: 'red', name: 'red', color: '#DC143C', type: 'color' },
-            { id: 'pink', name: 'pink', color: '#FFB6C1', type: 'color' },
-            { id: 'nude', name: 'nude', color: '#E8C4B8', type: 'color' },
-            { id: 'black', name: 'black', color: '#2C2C2C', type: 'color' },
-            { id: 'blue', name: 'blue', color: '#4682B4', type: 'color' },
-            { id: 'purple', name: 'purple', color: '#E6E6FA', type: 'color' },
-            { id: 'green', name: 'green', color: '#98FF98', type: 'color' },
-            { id: 'gold', name: 'gold', color: '#FFD700', type: 'color' },
+        const colors = [
+            { id: 'red', name: 'red', color: '#DC143C' },
+            { id: 'pink', name: 'pink', color: '#FFB6C1' },
+            { id: 'nude', name: 'nude', color: '#E8C4B8' },
+            { id: 'black', name: 'black', color: '#2C2C2C' },
+            { id: 'blue', name: 'blue', color: '#4682B4' },
+            { id: 'purple', name: 'purple', color: '#E6E6FA' },
+            { id: 'green', name: 'green', color: '#98FF98' },
+            { id: 'gold', name: 'gold', color: '#FFD700' },
+            { id: 'coral', name: 'coral', color: '#FF7F50' },
+            { id: 'white', name: 'white', color: '#FFFFFF' }
         ];
 
-        // Extraction variables
-        let extractCanvas, extractCtx, extractImg;
-        let isDrawing = false;
-        let startX, startY;
-
-        // Initialize
-        updateCounts();
-
         // Navigation
-        function showScreen(id) {
+        function goToScreen1() {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            document.getElementById('screen1').classList.add('active');
         }
 
-        function goToExtract() {
-            showScreen('extractScreen');
+        function goToScreen2() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen2').classList.add('active');
         }
 
-        function goToLibrary() {
-            populateLibrary();
-            showScreen('libraryScreen');
+        function goToScreen3() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen3').classList.add('active');
+            populateDesigns();
         }
 
-        function goToUploadHand() {
-            showScreen('uploadHandScreen');
+        function goToScreen4() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen4').classList.add('active');
         }
 
-        function updateCounts() {
-            document.getElementById('libraryCount').textContent = savedDesigns.length;
-            document.getElementById('savedCount').textContent = savedDesigns.length;
-        }
-
-        // File uploads
-        document.getElementById('inspoInput').addEventListener('change', function(e) {
+        // File upload
+        document.getElementById('handFile').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    setupExtraction(event.target.result);
+                    currentHand = event.target.result;
+                    document.getElementById('handImg').src = currentHand;
+                    goToScreen3();
                 };
                 reader.readAsDataURL(file);
             }
         });
 
-        document.getElementById('handInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    currentHandImage = event.target.result;
-                    document.getElementById('handPreview').innerHTML = `<img src="${currentHandImage}">`;
-                    populateEditor();
-                    showScreen('editorScreen');
-                };
-                reader.readAsDataURL(file);
-            }
+        // Populate designs
+        function populateDesigns() {
+            const grid = document.getElementById('designGrid');
+            grid.innerHTML = colors.map(c => `
+                <div class="design-card" onclick="selectDesign('${c.id}')">
+                    <div class="design-preview" style="background: ${c.color}"></div>
+                    <div class="design-name">${c.name}</div>
+                </div>
+            `).join('');
+        }
+
+        // Select design
+        function selectDesign(id) {
+            selectedDesign = colors.find(c => c.id === id);
+            
+            // Visual feedback
+            document.querySelectorAll('.design-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.design-card').classList.add('selected');
+            
+            showBanner('tap a nail above to apply ' + selectedDesign.name);
+        }
+
+        // Apply to nail
+        document.querySelectorAll('.nail-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                if (selectedDesign) {
+                    const finger = this.getAttribute('data-finger');
+                    nailDesigns[finger] = selectedDesign;
+                    
+                    const preview = document.getElementById('prev-' + finger);
+                    preview.style.background = selectedDesign.color;
+                    this.classList.add('filled');
+                    
+                    showBanner(selectedDesign.name + ' added to ' + finger);
+                }
+            });
         });
 
-        // Setup extraction canvas
-        function setupExtraction(imgSrc) {
-            document.getElementById('extractionArea').style.display = 'block';
-            
-            extractImg = new Image();
-            extractImg.onload = function() {
-                extractCanvas = document.getElementById('extractionCanvas');
-                extractCtx = extractCanvas.getContext('2d');
-                
-                const maxW = Math.min(600, window.innerWidth - 80);
-                const scale = maxW / extractImg.width;
-                extractCanvas.width = extractImg.width * scale;
-                extractCanvas.height = extractImg.height * scale;
-                
-                extractCtx.drawImage(extractImg, 0, 0, extractCanvas.width, extractCanvas.height);
-                
-                extractCanvas.onmousedown = startDraw;
-                extractCanvas.onmousemove = draw;
-                extractCanvas.onmouseup = endDraw;
-            };
-            extractImg.src = imgSrc;
+        function clearNail(finger) {
+            delete nailDesigns[finger];
+            document.getElementById('prev-' + finger).style.background = '';
+            document.querySelector(`[data-finger="${finger}"]`).classList.remove('filled');
         }
 
-        function startDraw(e) {
-            const rect = extractCanvas.getBoundingClientRect();
-            startX = e.clientX - rect.left;
-            startY = e.clientY - rect.top;
-            isDrawing = true;
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            
-            const rect = extractCanvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            extractCtx.clearRect(0, 0, extractCanvas.width, extractCanvas.height);
-            extractCtx.drawImage(extractImg, 0, 0, extractCanvas.width, extractCanvas.height);
-            
-            extractCtx.strokeStyle = '#9CA986';
-            extractCtx.lineWidth = 3;
-            extractCtx.strokeRect(startX, startY, x - startX, y - startY);
-        }
-
-        function endDraw(e) {
-            if (!isDrawing) return;
-            isDrawing = false;
-            
-            const rect = extractCanvas.getBoundingClientRect();
-            const endX = e.clientX - rect.left;
-            const endY = e.clientY - rect.top;
-            
-            const w = Math.abs(endX - startX);
-            const h = Math.abs(endY - startY);
-            
-            if (w > 30 && h > 30) {
-                extractNail(Math.min(startX, endX), Math.min(startY, endY), w, h);
+        // Apply designs
+        function applyDesigns() {
+            if (Object.keys(nailDesigns).length === 0) {
+                alert('please select at least one design!');
+                return;
             }
-        }
 
-        function extractNail(x, y, w, h) {
-            const scale = extractImg.width / extractCanvas.width;
-            const tempCanvas = document.createElement('canvas');
-            const tempCtx = tempCanvas.getContext('2d');
-            
-            tempCanvas.width = w * scale;
-            tempCanvas.height = h * scale;
-            
-            tempCtx.drawImage(extractImg, x * scale, y * scale, w * scale, h * scale, 0, 0, tempCanvas.width, tempCanvas.height);
-            
-            const dataUrl = tempCanvas.toDataURL();
-            showExtracted(dataUrl);
-        }
-
-        function showExtracted(dataUrl) {
-            document.getElementById('extractedPreviews').style.display = 'block';
-            const container = document.getElementById('previewsContainer');
-            
-            const div = document.createElement('div');
-            div.className = 'extracted-item';
-            div.innerHTML = `
-                <canvas width="70" height="100"></canvas>
-                <button class="button" style="padding: 8px 16px; font-size: 14px;" onclick='saveDesign("${dataUrl}")'>
-                    💾 save
-                </button>
-            `;
-            
-            const canvas = div.querySelector('canvas');
+            const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             const img = new Image();
-            img.onload = () => ctx.drawImage(img, 0, 0, 70, 100);
-            img.src = dataUrl;
-            
-            container.appendChild(div);
-        }
 
-        function saveDesign(dataUrl) {
-            const design = {
-                id: 'saved-' + Date.now(),
-                name: 'design ' + (savedDesigns.length + 1),
-                imageData: dataUrl,
-                type: 'extracted'
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+
+                // Nail positions
+                const pos = {
+                    thumb: [img.width * 0.2, img.height * 0.6, 30, 45],
+                    index: [img.width * 0.35, img.height * 0.5, 25, 40],
+                    middle: [img.width * 0.5, img.height * 0.45, 26, 42],
+                    ring: [img.width * 0.65, img.height * 0.5, 25, 40],
+                    pinky: [img.width * 0.8, img.height * 0.6, 22, 35]
+                };
+
+                // Draw each nail
+                Object.keys(nailDesigns).forEach(finger => {
+                    const design = nailDesigns[finger];
+                    const [x, y, w, h] = pos[finger];
+
+                    ctx.globalAlpha = 0.7;
+                    ctx.fillStyle = design.color;
+                    ctx.beginPath();
+                    ctx.ellipse(x, y, w, h, 0, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Highlight
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.beginPath();
+                    ctx.ellipse(x, y - h * 0.3, w * 0.6, h * 0.4, 0, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                });
+
+                document.getElementById('resultImg').src = canvas.toDataURL();
+                goToScreen4();
             };
-            
-            savedDesigns.push(design);
-            localStorage.setItem('tipsySaved', JSON.stringify(savedDesigns));
-            updateCounts();
-            showBanner('✨ saved to library!');
+
+            img.src = currentHand;
         }
 
-        function populateLibrary() {
-            const savedGrid = document.getElementById('savedGrid');
-            const classicGrid = document.getElementById('classicGrid');
-            
-            if (savedDesigns.length === 0) {
-                savedGrid.innerHTML = '<p style="text-align:center;padding:20px;color:var(--mauve)">no designs yet - extract some!</p>';
+        // Save and share
+        function saveImage() {
+            const link = document.createElement('a');
+            link.download = 'tipsy-nails.png';
+            link.href = document.getElementById('resultImg').src;
+            link.click();
+            showBanner('✨ image saved!');
+        }
+
+        function shareImage() {
+            if (navigator.share) {
+                const img = document.getElementById('resultImg');
+                fetch(img.src)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], 'tipsy-nails.png', { type: 'image/png' });
+                        navigator.share({ files: [file] });
+                    });
             } else {
-                savedGrid.innerHTML = savedDesigns.map(d => makeCard(d, true)).join('');
-            }
-            
-            classicGrid.innerHTML = classicColors.map(d => makeCard(d, false)).join('');
-        }
-
-        function populateEditor() {
-            const savedGrid = document.getElementById('editorSavedGrid');
-            const classicGrid = document.getElementById('editorClassicGrid');
-            
-            if (savedDesigns.length === 0) {
-                savedGrid.innerHTML = '<p style="text-align:center;padding:20px;color:var(--mauve)">extract designs first!</p>';
-            } else {
-                savedGrid.innerHTML = savedDesigns.map(d => makeCard(d, false)).join('');
-            }
-            
-            classicGrid.innerHTML = classicColors.map(d => makeCard(d, false)).join('');
-        }
-
-        function makeCard(design, showDelete) {
-            const style = design.type === 'color' 
-                ? `background: ${design.color}` 
-                : `background-image: url('${design.imageData}'); background-size: cover`;
-            
-            return `
-                <div class="design-card" draggable="true" data-design='${JSON.stringify(design)}'>
-                    ${showDelete ? `<button class="delete-design" onclick='deleteDesign("${design.id}")'>×</button>` : ''}
-                    <div class="design-preview" style="${style}"></div>
-                    <div class="design-name">${design.name}</div>
-                </div>
-            `;
-        }
-
-        function deleteDesign(id) {
-            if (confirm('delete this design?')) {
-                savedDesigns = savedDesigns.filter(d => d.id !== id);
-                localStorage.setItem('tipsySaved', JSON.stringify(savedDesigns));
-                updateCounts();
-                populateLibrary();
+                saveImage();
             }
         }
 
-        // Drag and drop
-        let draggedDesign = null;
+        function showBanner(msg) {
+            const existing = document.querySelector('.banner');
+            if (existing) existing.remove();
 
-        document.addEventListener('dragstart', function(e) {
-            if (e.target.classList.contains('design-card')) {
-                draggedDesign = JSON.parse(e.target.getAttribute('data-design'));
-                e.target.classList.add('dragging');
-            }
-        });
+            const banner = document.createElement('div');
+            banner.className = 'banner';
+            banner.textContent = msg;
+            document.querySelector('.container').prepend(banner);
 
-        document.addEventListener('dragend', function(e) {
-            if (e.target.classList.contains('design-card')) {
-                e.target.classList.remove('dragging');
-            }
-        });
-
-        document.querySelectorAll('.nail-slot').forEach(slot => {
-            slot.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                this
+            setTimeout(() => banner.remove(), 2500);
+        }
+    </script>
+</body>
+</html>
